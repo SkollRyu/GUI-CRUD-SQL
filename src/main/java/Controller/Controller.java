@@ -145,17 +145,20 @@ public class Controller implements Initializable {
         String query = "INSERT INTO books VALUES (" + tfID.getText() + ",'" + tfTitle.getText() + "','" + tfAuthor.getText() + "',"
                 + tfYear.getText() + "," + tfPage.getText() + ")";
         executeQuery(query);
+        resetValue();
         showBooks();
     }
     private void updateRecord(){
         String query = "UPDATE  books SET title  = '" + tfTitle.getText() + "', author = '" + tfAuthor.getText() + "', year = " +
                 tfYear.getText() + ", page = " + tfPage.getText() + " WHERE id = " + tfID.getText() + "";
         executeQuery(query);
+        resetValue();
         showBooks();
     }
     private void deleteButton(){
         String query = "DELETE FROM books WHERE id =" + tfID.getText() + "";
         executeQuery(query);
+        resetValue();
         showBooks();
     }
 
@@ -168,6 +171,14 @@ public class Controller implements Initializable {
         }catch(Exception ex){
             ex.printStackTrace();
         }
+    }
+
+    private void resetValue(){
+        tfID.setText("");
+        tfTitle.setText("");
+        tfAuthor.setText("");
+        tfYear.setText("");
+        tfPage.setText("");
     }
 
     @FXML
